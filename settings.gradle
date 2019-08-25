@@ -1,0 +1,3 @@
+include 'desktop', 'core'
+rootProject.name = 'small-world'
+

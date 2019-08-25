@@ -1,0 +1,17 @@
+plugins {
+    id "java"
+}
+
+group "fish.eyebrow"
+version "1.0-SNAPSHOT"
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation "com.badlogicgames.gdx:gdx-backend-lwjgl:1.9.10"
+    implementation "com.badlogicgames.gdx:gdx-platform:1.9.10:natives-desktop"
+}
