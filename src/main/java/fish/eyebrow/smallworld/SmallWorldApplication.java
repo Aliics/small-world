@@ -12,9 +12,10 @@ import com.badlogic.gdx.graphics.g3d.ModelBatch;
 import com.badlogic.gdx.graphics.g3d.ModelInstance;
 import com.badlogic.gdx.graphics.g3d.attributes.ColorAttribute;
 import com.badlogic.gdx.graphics.g3d.utils.ModelBuilder;
-import com.badlogic.gdx.math.Vector3;
 
 public class SmallWorldApplication extends ApplicationAdapter {
+
+    private CameraInputProcessor cameraInputProcessor;
 
     private PerspectiveCamera camera;
 
@@ -23,16 +24,14 @@ public class SmallWorldApplication extends ApplicationAdapter {
     private ModelInstance modelInstance;
 
 
+    SmallWorldApplication(final CameraInputProcessor keyboardInputProcessor) {
+        this.cameraInputProcessor = keyboardInputProcessor;
+    }
+
+
     @Override
     public void create() {
-        camera = new PerspectiveCamera();
-        camera.fieldOfView = 90;
-        camera.viewportWidth = Gdx.graphics.getWidth();
-        camera.viewportHeight = Gdx.graphics.getHeight();
-        camera.near = 0;
-        camera.far = 10000;
-        camera.position.set(new Vector3(10, 10, 10));
-
+        camera = cameraInputProcessor.getCamera();
         modelBatch = new ModelBatch();
 
         final ModelBuilder modelBuilder = new ModelBuilder();
@@ -41,7 +40,7 @@ public class SmallWorldApplication extends ApplicationAdapter {
                                                  Usage.Position | Usage.Normal);
         modelInstance = new ModelInstance(box);
 
-        Gdx.input.setInputProcessor();
+        Gdx.input.setInputProcessor(cameraInputProcessor);
     }
 
 

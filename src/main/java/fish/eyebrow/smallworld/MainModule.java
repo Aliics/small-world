@@ -31,8 +31,25 @@ public class MainModule extends AbstractModule {
         catch (final Exception e) {
             logger.warn("Problem arose when binding names from configuration.properties: {}", e.getMessage());
         }
+    }
 
-        bind(SmallWorldApplication.class).toInstance(new SmallWorldApplication());
+
+    @Provides
+    @Singleton
+    private CameraInputProcessor cameraInputProcessor(@Named("camera.fieldOfView") final int fieldOfView,
+                                                      @Named("camera.viewport.width") final float viewportWidth,
+                                                      @Named("camera.viewport.height") final float viewportHeight,
+                                                      @Named("camera.near") final int near,
+                                                      @Named("camera.far") final int far) {
+        return new CameraInputProcessor(fieldOfView, viewportWidth, viewportHeight, near, far);
+    }
+
+
+    @Inject
+    @Provides
+    @Singleton
+    private SmallWorldApplication smallWorldApplication(final CameraInputProcessor cameraInputProcessor) {
+        return new SmallWorldApplication(cameraInputProcessor);
     }
 
 
