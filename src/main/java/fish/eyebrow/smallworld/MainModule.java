@@ -1,6 +1,5 @@
 package fish.eyebrow.smallworld;
 
-import com.badlogic.gdx.ApplicationListener;
 import com.badlogic.gdx.backends.lwjgl.LwjglApplication;
 import com.badlogic.gdx.backends.lwjgl.LwjglApplicationConfiguration;
 import com.google.inject.AbstractModule;
@@ -33,7 +32,7 @@ public class MainModule extends AbstractModule {
             logger.warn("Problem arose when binding names from configuration.properties: {}", e.getMessage());
         }
 
-        bind(SmallWorldAdapter.class).toInstance(new SmallWorldAdapter());
+        bind(SmallWorldApplication.class).toInstance(new SmallWorldApplication());
     }
 
 
@@ -43,12 +42,12 @@ public class MainModule extends AbstractModule {
     private LwjglApplication lwjglApplication(@Named("window.title") final String title,
                                               @Named("window.width") final int width,
                                               @Named("window.height") final int height,
-                                              final SmallWorldAdapter smallWorldAdapter) {
+                                              final SmallWorldApplication smallWorldApplication) {
         final LwjglApplicationConfiguration configuration = new LwjglApplicationConfiguration();
         configuration.title = title;
         configuration.width = width;
         configuration.height = height;
 
-        return new LwjglApplication(smallWorldAdapter, configuration);
+        return new LwjglApplication(smallWorldApplication, configuration);
     }
 }
