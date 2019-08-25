@@ -12,6 +12,9 @@ repositories {
 }
 
 dependencies {
+    implementation "org.slf4j:slf4j-api:1.7.27"
+    implementation "org.slf4j:slf4j-simple:1.7.27"
+    implementation "com.google.inject:guice:4.2.2"
     implementation "com.badlogicgames.gdx:gdx-backend-lwjgl:1.9.10"
     implementation "com.badlogicgames.gdx:gdx-platform:1.9.10:natives-desktop"
 }
