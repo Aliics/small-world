@@ -43,6 +43,8 @@ public class SmallWorldApplication extends ApplicationAdapter {
 
         Gdx.input.setCursorCatched(true);
         Gdx.input.setInputProcessor(cameraInputProcessor);
+
+        Gdx.gl.glClearColor(0.5F, 0.8F, 0.95F, 0F);
     }
 
 
