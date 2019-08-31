@@ -62,10 +62,10 @@ public class CameraInputProcessor extends InputAdapter {
 
     private void processKeyInput() {
         keysPressed.forEach(keycode -> {
-            final float verticleMovement = keycode == Keys.W ? movementSpeed : keycode == Keys.S ? -movementSpeed : 0F;
+            final float verticalMovement = keycode == Keys.W ? movementSpeed : keycode == Keys.S ? -movementSpeed : 0F;
             final float horizontalMovement = keycode == Keys.D ? movementSpeed : keycode == Keys.A ? -movementSpeed : 0F;
             if (keycode == Keys.W || keycode == Keys.S) {
-                placeholder.set(camera.direction).nor().scl(verticleMovement);
+                placeholder.set(camera.direction).nor().scl(verticalMovement);
             }
             else if (keycode == Keys.A || keycode == Keys.D) {
                 placeholder.set(camera.direction).crs(camera.up).nor().scl(horizontalMovement);

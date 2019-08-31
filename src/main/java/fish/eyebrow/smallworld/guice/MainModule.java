@@ -1,4 +1,4 @@
-package fish.eyebrow.smallworld;
+package fish.eyebrow.smallworld.guice;
 
 import com.badlogic.gdx.backends.lwjgl.LwjglApplication;
 import com.badlogic.gdx.backends.lwjgl.LwjglApplicationConfiguration;
@@ -8,6 +8,7 @@ import com.google.inject.Provides;
 import com.google.inject.Singleton;
 import com.google.inject.name.Named;
 import com.google.inject.name.Names;
+import fish.eyebrow.smallworld.SmallWorldApplication;
 import fish.eyebrow.smallworld.io.CameraInputProcessor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
