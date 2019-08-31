@@ -12,6 +12,7 @@ import com.badlogic.gdx.graphics.g3d.ModelBatch;
 import com.badlogic.gdx.graphics.g3d.ModelInstance;
 import com.badlogic.gdx.graphics.g3d.attributes.ColorAttribute;
 import com.badlogic.gdx.graphics.g3d.utils.ModelBuilder;
+import fish.eyebrow.smallworld.io.CameraInputProcessor;
 
 public class SmallWorldApplication extends ApplicationAdapter {
 
@@ -48,7 +49,7 @@ public class SmallWorldApplication extends ApplicationAdapter {
     public void render() {
         Gdx.gl20.glClear(GL20.GL_DEPTH_BUFFER_BIT | GL20.GL_COLOR_BUFFER_BIT);
 
-        camera.update();
+        cameraInputProcessor.updateCamera();
 
         modelBatch.begin(camera);
         modelBatch.render(modelInstance);
