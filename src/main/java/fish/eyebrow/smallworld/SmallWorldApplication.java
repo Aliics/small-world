@@ -41,6 +41,7 @@ public class SmallWorldApplication extends ApplicationAdapter {
                                                  Usage.Position | Usage.Normal);
         modelInstance = new ModelInstance(box);
 
+        Gdx.input.setCursorCatched(true);
         Gdx.input.setInputProcessor(cameraInputProcessor);
     }
 
