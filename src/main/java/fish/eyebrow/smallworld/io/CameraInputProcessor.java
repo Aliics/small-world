@@ -54,13 +54,11 @@ public class CameraInputProcessor extends InputAdapter {
 
     @Override
     public boolean keyUp(final int keycode) {
-        if (keycode == Movement.FORWARD || keycode == Movement.BACKWARD) {
-            velocity.setZ(0F);
-        }
+        final boolean longitudeMovement = keycode == Movement.FORWARD || keycode == Movement.BACKWARD;
+        final boolean latitudeMovement = keycode == Movement.LEFT || keycode == Movement.RIGHT;
 
-        if (keycode == Movement.LEFT || keycode == Movement.RIGHT) {
-            velocity.setX(0F);
-        }
+        velocity.setZ(longitudeMovement ? 0F : velocity.z);
+        velocity.setX(latitudeMovement ? 0F : velocity.x);
 
         return true;
     }
