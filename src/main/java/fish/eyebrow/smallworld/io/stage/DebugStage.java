@@ -1,4 +1,4 @@
-package fish.eyebrow.smallworld.io;
+package fish.eyebrow.smallworld.io.stage;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
@@ -9,10 +9,10 @@ import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Label.LabelStyle;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import fish.eyebrow.smallworld.SmallWorldApplication;
-import fish.eyebrow.smallworld.io.provider.DirectionLabelTextProvider;
-import fish.eyebrow.smallworld.io.provider.FPSTextLabelProvider;
-import fish.eyebrow.smallworld.io.provider.KeysPressedLabelTextProvider;
-import fish.eyebrow.smallworld.io.provider.PositionLabelTextProvider;
+import fish.eyebrow.smallworld.provider.DirectionLabelTextProvider;
+import fish.eyebrow.smallworld.provider.FPSTextLabelProvider;
+import fish.eyebrow.smallworld.provider.KeysPressedLabelTextProvider;
+import fish.eyebrow.smallworld.provider.PositionLabelTextProvider;
 
 import java.util.HashSet;
 
@@ -94,12 +94,12 @@ public class DebugStage extends Stage {
     }
 
 
-    boolean getDebugVisible() {
+    public boolean getDebugVisible() {
         return debugVisible;
     }
 
 
-    void setDebugVisible(final boolean debugVisible) {
+    public void setDebugVisible(final boolean debugVisible) {
         this.debugVisible = debugVisible;
 
         debugTable.setVisible(debugVisible);

@@ -1,4 +1,4 @@
-package fish.eyebrow.smallworld.io.provider;
+package fish.eyebrow.smallworld.provider;
 
 import com.badlogic.gdx.graphics.PerspectiveCamera;
 import com.badlogic.gdx.math.Vector3;

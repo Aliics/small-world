@@ -9,7 +9,7 @@ import com.google.inject.Singleton;
 import com.google.inject.name.Named;
 import com.google.inject.name.Names;
 import fish.eyebrow.smallworld.SmallWorldApplication;
-import fish.eyebrow.smallworld.io.FreeCameraController;
+import fish.eyebrow.smallworld.io.controller.FreeCameraController;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

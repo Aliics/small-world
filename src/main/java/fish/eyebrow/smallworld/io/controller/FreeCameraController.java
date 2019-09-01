@@ -1,18 +1,13 @@
-package fish.eyebrow.smallworld.io;
+package fish.eyebrow.smallworld.io.controller;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input.Keys;
-import com.badlogic.gdx.InputAdapter;
 import com.badlogic.gdx.graphics.PerspectiveCamera;
 import com.badlogic.gdx.math.Vector3;
 
-import java.util.HashSet;
-
-public class FreeCameraController extends InputAdapter {
+public class FreeCameraController extends BaseInputController {
 
     private PerspectiveCamera camera;
-
-    private HashSet<Integer> keysPressed;
 
     private boolean touchedDragged;
 
@@ -30,21 +25,8 @@ public class FreeCameraController extends InputAdapter {
         camera.near = near;
         camera.far = far;
 
-        keysPressed = new HashSet<>();
         placeholder = Vector3.Zero;
         movementSpeed = 0.1F;
-    }
-
-
-    @Override
-    public boolean keyDown(final int keycode) {
-        return keysPressed.add(keycode);
-    }
-
-
-    @Override
-    public boolean keyUp(final int keycode) {
-        return keysPressed.remove(keycode);
     }
 
 
@@ -77,7 +59,7 @@ public class FreeCameraController extends InputAdapter {
 
 
     private void processKeyInput() {
-        keysPressed.forEach(keycode -> {
+        getKeysPressed().forEach(keycode -> {
             final float verticalMovement = keycode == Keys.W ? movementSpeed : keycode == Keys.S ? -movementSpeed : 0F;
             final float horizontalMovement = keycode == Keys.D ? movementSpeed : keycode == Keys.A ? -movementSpeed : 0F;
             if (keycode == Keys.W || keycode == Keys.S) {
@@ -97,10 +79,5 @@ public class FreeCameraController extends InputAdapter {
 
     public PerspectiveCamera getCamera() {
         return camera;
-    }
-
-
-    HashSet<Integer> getKeysPressed() {
-        return keysPressed;
     }
 }

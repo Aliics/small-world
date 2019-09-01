@@ -6,24 +6,22 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.PerspectiveCamera;
 import com.badlogic.gdx.graphics.g3d.ModelBatch;
 import com.badlogic.gdx.graphics.g3d.ModelInstance;
-import fish.eyebrow.smallworld.io.DebugStage;
-import fish.eyebrow.smallworld.io.FreeCameraController;
-import fish.eyebrow.smallworld.io.HUDInputController;
+import fish.eyebrow.smallworld.io.stage.DebugStage;
+import fish.eyebrow.smallworld.io.controller.FreeCameraController;
 
 import java.util.HashSet;
-import java.util.Set;
 
 public class SmallWorldApplication extends ApplicationAdapter {
 
-    private FreeCameraController freeCameraController;
+    private final HashSet<ModelInstance> modelInstances = new HashSet<>();
+
+    private final FreeCameraController freeCameraController;
 
     private final boolean debugStageTableDebug;
 
     private PerspectiveCamera camera;
 
     private ModelBatch modelBatch;
-
-    private Set<ModelInstance> modelInstances;
 
     private DebugStage debugStage;
 
@@ -38,11 +36,10 @@ public class SmallWorldApplication extends ApplicationAdapter {
     public void create() {
         camera = freeCameraController.getCamera();
         modelBatch = new ModelBatch();
-        modelInstances = new HashSet<>();
         debugStage = new DebugStage(debugStageTableDebug);
 
+        freeCameraController.setDebugStage(debugStage);
         Gdx.input.setInputProcessor(freeCameraController);
-        Gdx.input.setInputProcessor(new HUDInputController(debugStage));
 
         Gdx.gl.glClearColor(0.5F, 0.8F, 0.95F, 0F);
     }
