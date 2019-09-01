@@ -14,6 +14,8 @@ public class FreeCameraController extends InputAdapter {
 
     private HashSet<Integer> keysPressed;
 
+    private boolean touchedDragged;
+
     private Vector3 placeholder;
 
     private float movementSpeed;
@@ -46,17 +48,32 @@ public class FreeCameraController extends InputAdapter {
     }
 
 
+    @Override
+    public boolean touchDragged(int screenX, int screenY, int pointer) {
+        return processMouseInput();
+    }
+
+
+    @Override
+    public boolean touchUp(final int screenX, final int screenY, final int pointer, final int button) {
+        return touchedDragged = false;
+    }
+
+
     public void updateCamera() {
-        processMouseInput();
+        Gdx.input.setCursorCatched(touchedDragged);
+        // processMouseInput();
         processKeyInput();
         camera.update(true);
     }
 
 
-    private void processMouseInput() {
+    private boolean processMouseInput() {
         placeholder.set(camera.direction).crs(camera.up).nor();
         camera.direction.rotate(camera.up, -Gdx.input.getDeltaX())
                         .rotate(-Gdx.input.getDeltaY(), placeholder.x, 0F, placeholder.z);
+
+        return touchedDragged = true;
     }
 
 

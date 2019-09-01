@@ -33,7 +33,7 @@ public class SmallWorldApplication extends ApplicationAdapter {
         modelBatch = new ModelBatch();
         modelInstances = new HashSet<>();
 
-        Gdx.input.setCursorCatched(true);
+//        Gdx.input.setCursorCatched(true);
         Gdx.input.setInputProcessor(freeCameraController);
 
         Gdx.gl.glClearColor(0.5F, 0.8F, 0.95F, 0F);
