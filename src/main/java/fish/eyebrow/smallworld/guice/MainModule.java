@@ -50,8 +50,9 @@ public class MainModule extends AbstractModule {
     @Inject
     @Provides
     @Singleton
-    private SmallWorldApplication smallWorldApplication(final FreeCameraController freeCameraController) {
-        return new SmallWorldApplication(freeCameraController);
+    private SmallWorldApplication smallWorldApplication(final FreeCameraController freeCameraController,
+                                                        @Named("debug.stage.table.debug") final boolean debugStageTableDebug) {
+        return new SmallWorldApplication(freeCameraController, debugStageTableDebug);
     }
 
 

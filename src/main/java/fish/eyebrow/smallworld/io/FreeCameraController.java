@@ -99,4 +99,9 @@ public class FreeCameraController extends InputAdapter {
     public PerspectiveCamera getCamera() {
         return camera;
     }
+
+
+    HashSet<Integer> getKeysPressed() {
+        return keysPressed;
+    }
 }
