@@ -62,7 +62,6 @@ public class FreeCameraController extends InputAdapter {
 
     public void updateCamera() {
         Gdx.input.setCursorCatched(touchedDragged);
-        // processMouseInput();
         processKeyInput();
         camera.update(true);
     }

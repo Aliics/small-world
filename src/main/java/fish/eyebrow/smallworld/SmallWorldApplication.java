@@ -8,6 +8,7 @@ import com.badlogic.gdx.graphics.g3d.ModelBatch;
 import com.badlogic.gdx.graphics.g3d.ModelInstance;
 import fish.eyebrow.smallworld.io.DebugStage;
 import fish.eyebrow.smallworld.io.FreeCameraController;
+import fish.eyebrow.smallworld.io.HUDInputController;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -41,6 +42,7 @@ public class SmallWorldApplication extends ApplicationAdapter {
         debugStage = new DebugStage(debugStageTableDebug);
 
         Gdx.input.setInputProcessor(freeCameraController);
+        Gdx.input.setInputProcessor(new HUDInputController(debugStage));
 
         Gdx.gl.glClearColor(0.5F, 0.8F, 0.95F, 0F);
     }

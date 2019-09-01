@@ -18,7 +18,9 @@ import java.util.HashSet;
 
 public class DebugStage extends Stage {
 
-    private Table table;
+    private Table debugTable;
+
+    private boolean debugVisible;
 
     private FPSTextLabelProvider fpsTextLabelProvider;
 
@@ -28,24 +30,25 @@ public class DebugStage extends Stage {
 
     private KeysPressedLabelTextProvider keysPressedLabelTextProvider;
 
-    private boolean debugTable;
+    private boolean tableDebug;
 
 
-    public DebugStage(final boolean debugTable) {
+    public DebugStage(final boolean tableDebug) {
         super();
 
-        this.debugTable = debugTable;
+        this.tableDebug = tableDebug;
 
         createDebugTable();
         createDebugLabels();
-        addActor(table);
+        addActor(this.debugTable);
     }
 
 
     private void createDebugTable() {
-        table = new Table();
-        table.setDebug(debugTable);
-        table.setSize(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+        debugTable = new Table();
+        debugTable.setDebug(tableDebug);
+        debugTable.setVisible(debugVisible);
+        debugTable.setSize(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
     }
 
 
@@ -60,10 +63,10 @@ public class DebugStage extends Stage {
         final Label keysPressedKeyLabel = new Label("[KPD]", labelStyle);
         final Label keysPressedValueLabel = new Label("0", labelStyle);
 
-        addKeyValueRow(table, fpsKeyLabel, fpsValueLabel);
-        addKeyValueRow(table, directionKeyLabel, directionValueLabel);
-        addKeyValueRow(table, positionKeyLabel, positionValueLabel);
-        addKeyValueRow(table, keysPressedKeyLabel, keysPressedValueLabel);
+        addKeyValueRow(debugTable, fpsKeyLabel, fpsValueLabel);
+        addKeyValueRow(debugTable, directionKeyLabel, directionValueLabel);
+        addKeyValueRow(debugTable, positionKeyLabel, positionValueLabel);
+        addKeyValueRow(debugTable, keysPressedKeyLabel, keysPressedValueLabel);
 
         fpsTextLabelProvider = new FPSTextLabelProvider(fpsValueLabel);
         directionLabelTextProvider = new DirectionLabelTextProvider(directionValueLabel);
@@ -88,5 +91,17 @@ public class DebugStage extends Stage {
         directionLabelTextProvider.provide(camera);
         positionLabelTextProvider.provide(camera);
         keysPressedLabelTextProvider.provide(keysPressed);
+    }
+
+
+    boolean getDebugVisible() {
+        return debugVisible;
+    }
+
+
+    void setDebugVisible(final boolean debugVisible) {
+        this.debugVisible = debugVisible;
+
+        debugTable.setVisible(debugVisible);
     }
 }
