@@ -6,14 +6,14 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.PerspectiveCamera;
 import com.badlogic.gdx.graphics.g3d.ModelBatch;
 import com.badlogic.gdx.graphics.g3d.ModelInstance;
-import fish.eyebrow.smallworld.io.CameraInputProcessor;
+import fish.eyebrow.smallworld.io.FreeCameraController;
 
 import java.util.HashSet;
 import java.util.Set;
 
 public class SmallWorldApplication extends ApplicationAdapter {
 
-    private CameraInputProcessor cameraInputProcessor;
+    private FreeCameraController freeCameraController;
 
     private PerspectiveCamera camera;
 
@@ -22,19 +22,19 @@ public class SmallWorldApplication extends ApplicationAdapter {
     private Set<ModelInstance> modelInstances;
 
 
-    public SmallWorldApplication(final CameraInputProcessor keyboardInputProcessor) {
-        this.cameraInputProcessor = keyboardInputProcessor;
+    public SmallWorldApplication(final FreeCameraController freeCameraController) {
+        this.freeCameraController = freeCameraController;
     }
 
 
     @Override
     public void create() {
-        camera = cameraInputProcessor.getCamera();
+        camera = freeCameraController.getCamera();
         modelBatch = new ModelBatch();
         modelInstances = new HashSet<>();
 
         Gdx.input.setCursorCatched(true);
-        Gdx.input.setInputProcessor(cameraInputProcessor);
+        Gdx.input.setInputProcessor(freeCameraController);
 
         Gdx.gl.glClearColor(0.5F, 0.8F, 0.95F, 0F);
     }
@@ -44,7 +44,7 @@ public class SmallWorldApplication extends ApplicationAdapter {
     public void render() {
         Gdx.gl20.glClear(GL20.GL_DEPTH_BUFFER_BIT | GL20.GL_COLOR_BUFFER_BIT);
 
-        cameraInputProcessor.updateCamera();
+        freeCameraController.updateCamera();
 
         modelBatch.begin(camera);
         modelBatch.render(modelInstances);

@@ -8,7 +8,7 @@ import com.badlogic.gdx.math.Vector3;
 
 import java.util.HashSet;
 
-public class CameraInputProcessor extends InputAdapter {
+public class FreeCameraController extends InputAdapter {
 
     private PerspectiveCamera camera;
 
@@ -19,7 +19,7 @@ public class CameraInputProcessor extends InputAdapter {
     private float movementSpeed;
 
 
-    public CameraInputProcessor(final int fieldOfView, final float viewportWidth, final float viewportHeight, final int near, final int far) {
+    public FreeCameraController(final int fieldOfView, final float viewportWidth, final float viewportHeight, final int near, final int far) {
         camera = new PerspectiveCamera();
         camera.position.set(Vector3.Zero);
         camera.fieldOfView = fieldOfView;
